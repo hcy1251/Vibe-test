@@ -20,29 +20,29 @@ function formatPrice(cents: number): string {
 
 function ProductCard({ product }: { product: Product }) {
   return (
-    <Card className="transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+    <Card className="girly-card transition-all duration-300 hover:shadow-lg hover:-translate-y-2 float-animation border-2 border-pink-200/50">
       <CardHeader className="p-0">
-        <div className="aspect-square overflow-hidden rounded-t-lg">
+        <div className="aspect-square overflow-hidden rounded-t-xl">
           <Image
             src={product.image_url}
             alt={product.name}
             width={400}
             height={400}
-            className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
+            className="w-full h-full object-cover transition-all duration-300 hover:scale-110"
           />
         </div>
       </CardHeader>
-      <CardContent className="p-4">
-        <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+      <CardContent className="p-6">
+        <CardTitle className="text-xl font-display font-bold text-primary mb-3 pulse-soft-animation">
           {product.name}
         </CardTitle>
-        <CardDescription className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+        <CardDescription className="text-2xl font-bold text-accent">
           {formatPrice(product.price_in_cents)}
         </CardDescription>
       </CardContent>
-      <CardFooter className="p-4 pt-0">
-        <Button className="w-full" variant="default">
-          加入購物車
+      <CardFooter className="p-6 pt-0">
+        <Button className="w-full girly-button text-white font-semibold py-3 rounded-xl border-0 bounce-gentle-animation" variant="default">
+          💕 加入購物車 💕
         </Button>
       </CardFooter>
     </Card>
@@ -51,16 +51,16 @@ function ProductCard({ product }: { product: Product }) {
 
 function ProductSkeleton() {
   return (
-    <Card>
+    <Card className="girly-card border-2 border-pink-200/30 pulse-soft-animation">
       <CardHeader className="p-0">
-        <Skeleton className="aspect-square w-full rounded-t-lg" />
+        <Skeleton className="aspect-square w-full rounded-t-xl bg-pink-100/50" />
       </CardHeader>
-      <CardContent className="p-4">
-        <Skeleton className="h-6 w-3/4 mb-2" />
-        <Skeleton className="h-8 w-1/2" />
+      <CardContent className="p-6">
+        <Skeleton className="h-6 w-3/4 mb-3 bg-pink-200/30 rounded-full" />
+        <Skeleton className="h-8 w-1/2 bg-purple-200/30 rounded-full" />
       </CardContent>
-      <CardFooter className="p-4 pt-0">
-        <Skeleton className="h-10 w-full" />
+      <CardFooter className="p-6 pt-0">
+        <Skeleton className="h-12 w-full bg-pink-300/30 rounded-xl" />
       </CardFooter>
     </Card>
   )
@@ -91,62 +91,66 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen gradient-bg">
       {/* Hero Section */}
-      <section className="bg-white dark:bg-gray-800 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-pink-50/80 to-purple-50/80 backdrop-blur-sm py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <Badge variant="secondary" className="mb-4">
-            精選商品
+          <Badge variant="secondary" className="mb-6 bg-pink-200/70 text-pink-800 px-4 py-2 text-sm font-medium rounded-full sparkle-animation">
+            ✨ 精選商品 ✨
           </Badge>
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl mb-4">
-            探索美好生活
+          <h1 className="text-5xl font-display font-bold text-primary sm:text-6xl md:text-7xl mb-6 float-animation">
+            💖 探索美好生活 💖
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
-            精心挑選的優質商品，為您的生活增添更多色彩與品味
+          <p className="text-xl text-foreground/80 max-w-4xl mx-auto mb-10 font-body leading-relaxed">
+            精心挑選的優質商品，為您的生活增添更多色彩與品味 🌸
           </p>
-          <Button size="lg" className="text-lg px-8 py-3">
-            開始購物
+          <Button size="lg" className="girly-button text-lg px-10 py-4 rounded-full text-white font-semibold border-0">
+            🛍️ 開始購物 ✨
           </Button>
         </div>
       </section>
 
       {/* Products Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-pink-50/30">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              熱門商品
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-display font-bold text-primary mb-6 pulse-soft-animation">
+              🌟 熱門商品 🌟
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              每一件商品都經過精心挑選，品質保證
+            <p className="text-xl text-foreground/70 font-body max-w-2xl mx-auto">
+              每一件商品都經過精心挑選，品質保證 💎
             </p>
           </div>
 
           {error && (
-            <div className="text-center py-8">
-              <p className="text-red-600 dark:text-red-400">
-                載入商品時發生錯誤：{error.message}
-              </p>
+            <div className="text-center py-12">
+              <div className="bg-pink-100/80 border border-pink-300/50 rounded-2xl p-8 max-w-md mx-auto girly-card">
+                <p className="text-pink-700 font-body text-lg">
+                  💔 載入商品時發生錯誤：{error.message}
+                </p>
+              </div>
             </div>
           )}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {loading
               ? Array.from({ length: 8 }).map((_, i) => (
                   <ProductSkeleton key={i} />
                 ))
-              : products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+              : products.map((product, index) => (
+                  <div key={product.id} style={{ animationDelay: `${index * 0.1}s` }}>
+                    <ProductCard product={product} />
+                  </div>
                 ))}
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-12 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-gradient-to-t from-pink-100/50 to-transparent border-t border-pink-200/30 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-600 dark:text-gray-300">
-            © 2024 Vibe Store. 為您帶來美好的購物體驗。
+          <p className="text-foreground/60 font-body text-lg sparkle-animation">
+            © 2024 Vibe Store. 為您帶來美好的購物體驗 💕
           </p>
         </div>
       </footer>
